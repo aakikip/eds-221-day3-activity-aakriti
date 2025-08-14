@@ -1,0 +1,59 @@
+---
+title: "toolik_chem"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(here)
+```
+
+```{r}
+library(janitor)
+```
+
+```{r}
+toolik_biochem <- read_csv(here::here("data", "2011_Kling_Akchem.csv"), na = c(".", "NA"))
+```
+
+```{r}
+View(toolik_biochem)
+```
+
+```{r}
+toolik_biochem <- toolik_biochem |> clean_names()
+```
+
+```{r}
+inlet_biochem <- toolik_biochem %>% dplyr::filter(site == "Toolik Inlet") %>% select(p_h, doc_u_m, tdn_u_m)
+```
+
+```{r}
+#mean_inlet_biochem <- vector(mode = "numeric", length = ncol(inlet_biochem))
+
+#for(i in 1:ncol(inlet_biochem)) {
+  #mean_p_h <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  #mean_inlet_biochem <- mean_p_h
+}
+```
+
+```{r}
+for(i in seq_along(inlet_biochem)) {
+  mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  print(mean_val)
+}
+  
+```
+
+```{r}
+apply(X = inlet_biochem, MARGIN = 2, FUN = mean, na.rm = TRUE)
+```
+
+```{r}
+purrr::map_df(.x = inlet_biochem, .f = mean, na.rm = TRUE)
+
+```

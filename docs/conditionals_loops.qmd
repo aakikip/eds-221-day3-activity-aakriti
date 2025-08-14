@@ -1,0 +1,85 @@
+---
+title: "conditionals_loops"
+format: html
+editor: visual
+---
+
+```{r}
+pm2_5 <- 48
+
+if (pm2_5 < 100) {
+  print("Low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("Unhealthy for sensitive groups")
+} else if (pm2_5 >= 100)
+  print("Health risk present")
+```
+
+```{r}
+pm2_5 <- 138
+
+if (pm2_5 < 100) {
+  print("Low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("Unhealthy for sensitive groups")
+} else if (pm2_5 >= 100)
+  print("Health risk present")
+```
+
+```{r}
+species <- "blue whale"
+stringr::str_detect(species, pattern = "whale")
+
+phrase <- "You found a whale"
+
+if (stringr::str_detect(phrase, "whale")) {
+  print("You found a whale")
+}
+```
+
+```{r}
+species <- "blue whale"
+stringr::str_detect(species, pattern = "gun")
+
+phrase <- "You found a whale"
+
+if (stringr::str_detect(phrase, "gun")) {
+  print("You found a whale")
+}
+```
+
+```{r}
+base_burrito <- 6.50
+
+main_ingredients <- "veggie"
+
+if (main_ingredients == "veggie") {
+  price <- base_burrito
+} else if (main_ingredients == "chicken") {
+  price <- base_burrito + 3
+} else if (main_ingredients == "steak") {
+  price <- base_burrito + 3.25
+}
+
+```
+
+```{r}
+fish_count <- c(8, 10, 12, 23)
+fish_types <- c("goldfish", "tetras", "guppies", "mollies")
+
+for (i in seq_along(fish_count)) {
+  total_fish <- sum(fish_count)
+  fish_p <- (fish_count[i]/total_fish) * 100
+  print(fish_p)
+}
+
+```
+
+```{r}
+month.name
+#i <- 1:12
+
+for (month_num in seq_along(month.name)) {
+  print(paste(month.name[month_num], "is month", month_num))
+}
+```
